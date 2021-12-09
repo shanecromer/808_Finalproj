@@ -1,9 +1,33 @@
+##  CST 205 FA21##
+## Author: Shane Cromer scromer@csumb.edu###
+## Title: Drum Machine ##
+## Abstract: Trigger Drum Sound to make Beats.
+## Final project team number 808##
+##Yssa Traore <ystraore@csumb.edu>
+# Tuan Nguyen <tunguyen@csumb.edu>
+# Shane Cromer <scromer@csumb.edu>
+# Ivan Martinez <ivmartinez@csumb.edu>
+ 
+# Descriptions of important code blocks
+
+# Sources cited QT Documentation
+
+# https://github.com/shanecromer/BUTTONS
+
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PySide6.QtWidgets import (QApplication, QLabel, QWidget, 
+                                QPushButton, QVBoxLayout,QHBoxLayout)
+from PySide6.QtCore import Slot
 
 import pygame
+from tkinter import *
+
+## Tried PlaySound but Playsound did not work.
 from playsound import playsound
+
+
 
 
 pygame.mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
@@ -16,8 +40,13 @@ class Ui_MainWindow(object):
     
     def setupUi(self, MainWindow):
         
+       
+       
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(418, 200)
+    
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -147,6 +176,15 @@ class Ui_MainWindow(object):
         self.pushButton_2.setObjectName("DR110CLP.wav")
         self.pushButton_2.clicked.__setattr__
         self.pushButton_2.clicked.connect(self.B2)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(140, 160, 151, 31))
+        self.label.setObjectName("label")
+        self.verticalSlider = QtWidgets.QSlider(self.centralwidget)
+        self.verticalSlider.setGeometry(QtCore.QRect(390, 20, 18, 160))
+        self.verticalSlider.setOrientation(QtCore.Qt.Orientation.Vertical)
+        ## Tick interval not showing
+        self.verticalSlider.setTickInterval(10)
+        self.verticalSlider.setObjectName("verticalSlider")
         self.verticalLayout.addWidget(self.pushButton_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -159,6 +197,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
 
     
     def B1(self):
